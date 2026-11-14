@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية Nmap السيبرانية الاحترافية</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #090d16; color: #e2e8f0; padding: 20px; text-align: center; }
+        header { margin-bottom: 30px; }
+        h1 { color: #38bdf8; font-size: 24px; margin-bottom: 10px; text-shadow: 0 0 10px rgba(56,189,248,0.3); }
+        p { color: #94a3b8; font-size: 14px; }
+        
+        .container { max-width: 800px; margin: 0 auto; }
+        
+        .status-box { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; margin-bottom: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .status-box h3 { color: #f43f5e; margin-bottom: 8px; font-size: 18px; }
+        #current-status { color: #4ade80; font-weight: bold; font-size: 15px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+        
+        .card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 15px; text-align: right; transition: 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .card:hover { transform: translateY(-3px); border-color: #38bdf8; }
+        
+        .card h4 { color: #38bdf8; font-size: 15px; margin-bottom: 8px; }
+        .card p { font-size: 12px; color: #cbd5e1; margin-bottom: 12px; }
+        
+        button { background: #0284c7; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 13px; width: 100%; transition: 0.2s; font-weight: bold; }
+        button:hover { background: #0369a1; box-shadow: 0 0 10px rgba(2,132,199,0.5); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🛡️ منصة أكاديمية Nmap التفاعلية</h1>
+        <p>تحكم بمستويات الحماية لسيرفر التدريب وطبق أوامر الاستطلاع من التيرمينال</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="status-box">
+            <h3>حالة جدار الحماية والأمان على السيرفر</h3>
+            <p id="current-status">المستوى الحالي: المرحلة 1 (بدون حماية - استطلاع مباشر)</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h4>المرحلة 1: فحص أساسي</h4>
+                <p>بدون حماية، فحص اتصال عادي للبورتات.</p>
+                <button onclick="setShield(1, 'المرحلة 1: بدون حماية (استطلاع مباشر)')">تفعيل المستوى 1</button>
+            </div>
+
+            <div class="card">
+                <h4>المرحلة 2: فلترة البورتات</h4>
+                <p>تفعيل فلتر أساسي لحظر الفحص العشوائي.</p>
+                <button onclick="setShield(2, 'المرحلة 2: فلترة البورتات الأساسية')">تفعيل المستوى 2</button>
+            </div>
+
+            <div class="card">
+                <h4>المرحلة 3: جدار ناري (-f)</h4>
+                <p>حماية تتطلب تقطيع الحزم لتخطي الفلتر.</p>
+                <button onclick="setShield(3, 'المرحلة 3: جدار ناري يتطلب تقطيع الحزم -f')">تفعيل المستوى 3</button>
+            </div>
+
+            <div class="card">
+                <h4>المرحلة 4: حماية صارمة</h4>
+                <p>تتطلب بورت مصدر وهمي لتجاوز الحظر.</p>
+                <button onclick="setShield(4, 'المرحلة 4: حماية صارمة (--source-port 53)')">تفعيل المستوى 4</button>
+            </div>
+
+            <div class="card">
+                <h4>المرحلة 5: مراقبة سلوكية</h4>
+                <p>تتطلب فحص هادئ وبطيء لتفادي الرصد (-T1).</p>
+                <button onclick="setShield(5, 'المرحلة 5: مراقبة سلوكية متقدمة (-T1)')">تفعيل المستوى 5</button>
+            </div>
+
+            <div class="card">
+                <h4>المرحلة 6: التحدي الشامل</h4>
+                <p>درع أمني متقدم يدمج كافة تقنيات التخفي.</p>
+                <button onclick="setShield(6, 'المرحلة 6: التحدي الأمني الشامل والذكي')">تفعيل المستوى 6</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function setShield(level, desc) {
+            document.getElementById('current-status').innerText = "المستوى الحالي: " + desc;
+            alert("✅ تم تحديث حماية سيرفر التدريب بنجاح!\nالوضع الحالي: " + desc + "\nانتقل للتيرمينال وطبق الأمر المناسب.");
+        }
+    </script>
+
+</body>
+</html>
+
